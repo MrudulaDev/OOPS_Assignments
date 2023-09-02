@@ -21,16 +21,14 @@ class User:
         self.address = address
         self.user_password = user_password
 
-    def add_beneficiary(self, beneficiary_name, beneficiary_account_number):
-        beneficiary_name_account_num_details = "{}-{}".format(beneficiary_name, beneficiary_account_number)
+    def add_beneficiary(self, beneficiary_account_number):
         if beneficiary_account_number in self.beneficiary_list:
             raise ValueError("This Beneficiary Already Exists")
         else:
             self.beneficiary_list.append(beneficiary_account_number)
 
-    def delete_beneficiary(self, beneficiary_name, beneficiary_account_number):
-        beneficiary_details = "{}-{}".format(beneficiary_name, beneficiary_account_number)
-        self.beneficiary_list.remove(beneficiary_details)
+    def delete_beneficiary(self, beneficiary_account_number):
+        self.beneficiary_list.remove(beneficiary_account_number)
 
     def make_debit_transaction(self, amount, beneficiary_account_number):
         if amount > type(self).transaction_max_limit:
@@ -64,6 +62,6 @@ class User:
         elif transaction_type_filter == "credit":
             filtered_list = list(filter(lambda transaction: transaction[0] == "credit", self.transaction_history))
             list(map(self.printing_items, filtered_list))
-
-    def printing_items(self, item):
+    @staticmethod
+    def printing_items(item):
         print(item)

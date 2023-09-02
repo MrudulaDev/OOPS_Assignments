@@ -3,14 +3,13 @@ from user import User
 
 
 class Bank:
-    Banks_list = []
-
+    banks_list = []
     def __init__(self, bank_name):
         self.bank_name = bank_name
         self.bank_id = id(self)
         self.user_accounts = []
         self.manager_accounts = []
-        type(self).Banks_list.append(self)
+        type(self).banks_list.append(self)
 
     def creating_manager_account(self, bank_id, manager_account_name, manager_account_password):
         manager_account = Manager(manager_account_name, manager_account_password, bank_id)
