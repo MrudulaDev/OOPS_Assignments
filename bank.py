@@ -4,6 +4,7 @@ from user import User
 
 class Bank:
     banks_list = []
+
     def __init__(self, bank_name):
         self.bank_name = bank_name
         self.bank_id = id(self)

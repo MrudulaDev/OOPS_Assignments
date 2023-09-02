@@ -62,6 +62,7 @@ class User:
         elif transaction_type_filter == "credit":
             filtered_list = list(filter(lambda transaction: transaction[0] == "credit", self.transaction_history))
             list(map(self.printing_items, filtered_list))
+
     @staticmethod
     def printing_items(item):
         print(item)
